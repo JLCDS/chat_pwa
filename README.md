@@ -1,3 +1,3 @@
 # Twittor
 
-Un cascarón de chat usando jQuery para PWAs
+Un cascarón de chat usando jQuery para PWAs version1
