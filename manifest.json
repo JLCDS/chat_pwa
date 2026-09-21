@@ -11,15 +11,16 @@
     ],
     "start_url": "./index.html",
     "scope": "./",
-    "display": "standalone",
+    "display": "fullscreen",
     "display_override": [
+        "fullscreen",
         "standalone",
         "minimal-ui",
         "browser"
     ],
     "orientation": "portrait",
     "background_color": "#3498db",
-    "theme_color": "#3498db",
+    "theme_color": "#c0392b",
     "prefer_related_applications": false,
     "icons": [
         {
@@ -117,5 +118,15 @@
                 }
             ]
         }
-    ]
+    ],
+    "share_target": {
+        "action": "./index.html",
+        "method": "GET",
+        "enctype": "application/x-www-form-urlencoded",
+        "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url"
+        }
+    }
 }

@@ -84,16 +84,38 @@ avatarBtns.on('click', function () {
 
 });
 
-// Acceso directo del manifest: ./index.html?user=spiderman entra ya logueado
+// Parametros de entrada del manifest: accesos directos (?user=) y share_target
 (function () {
-    var solicitado = new URLSearchParams(window.location.search).get('user');
-    if (!solicitado) {
+
+    var params = new URLSearchParams(window.location.search);
+
+    // Acceso directo: ./index.html?user=spiderman entra ya logueado
+    var solicitado = params.get('user');
+    var avatar = avatarBtns.filter('[data-user="' + solicitado + '"]');
+
+    if (!avatar.length) {
+        // Sin personaje valido, el compartido entra como el heroe por defecto
+        avatar = avatarBtns.filter('[data-user="spiderman"]');
+    }
+
+    // share_target: Android manda el contenido compartido como ?title=&text=&url=
+    var compartido = [params.get('title'), params.get('text'), params.get('url')]
+        .filter(function (parte) { return parte; })
+        .join(' ');
+
+    if (!solicitado && !compartido) {
         return;
     }
-    var avatar = avatarBtns.filter('[data-user="' + solicitado + '"]');
-    if (avatar.length) {
-        avatar.click();
+
+    avatar.click();
+
+    if (compartido) {
+        crearMensajeHTML(compartido, usuario);
     }
+
+    // Limpia la query para que al recargar no se repita el mensaje
+    history.replaceState(null, '', window.location.pathname);
+
 })();
 
 // Boton de salir

@@ -1,8 +1,8 @@
 importScripts('./js/sw-utils.js');
 
-const STATIC_CACHE = 'static-v4';
-const DYNAMIC_CACHE = 'dynamic-v4';
-const INMUTABLE_CACHE = 'inmutable-v4';
+const STATIC_CACHE = 'static-v5';
+const DYNAMIC_CACHE = 'dynamic-v5';
+const INMUTABLE_CACHE = 'inmutable-v5';
 const APP_SHELL = [
     './',
     './index.html',
@@ -77,11 +77,23 @@ self.addEventListener('fetch', e => {
     const respuesta = caches.match(e.request).then(res => {
         if (res) {
             return res;
-        } else {
-            return fetch(e.request).then(newRes => {
-                return actualizaCacheDinamico(DYNAMIC_CACHE, e.request, newRes);
+        }
+
+        // Los shortcuts y el share_target llegan como index.html?user=...&text=...
+        // La query impide el match exacto, asi que reusamos el index cacheado.
+        if (e.request.mode === 'navigate') {
+            return caches.match('./index.html').then(shell => {
+                if (shell) {
+                    return shell;
+                }
+                return fetch(e.request).then(newRes =>
+                    actualizaCacheDinamico(DYNAMIC_CACHE, e.request, newRes));
             });
         }
+
+        return fetch(e.request).then(newRes => {
+            return actualizaCacheDinamico(DYNAMIC_CACHE, e.request, newRes);
+        });
     });
     e.respondWith(respuesta);
 });
