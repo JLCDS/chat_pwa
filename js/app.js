@@ -84,6 +84,18 @@ avatarBtns.on('click', function () {
 
 });
 
+// Acceso directo del manifest: ./index.html?user=spiderman entra ya logueado
+(function () {
+    var solicitado = new URLSearchParams(window.location.search).get('user');
+    if (!solicitado) {
+        return;
+    }
+    var avatar = avatarBtns.filter('[data-user="' + solicitado + '"]');
+    if (avatar.length) {
+        avatar.click();
+    }
+})();
+
 // Boton de salir
 salirBtn.on('click', function () {
 

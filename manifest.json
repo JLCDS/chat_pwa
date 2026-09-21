@@ -1,17 +1,72 @@
 {
+    "id": "/chat-heroes/",
     "name": "Chat para héroes",
     "short_name": "PWA Chat",
     "description": "Una aplicación de chat progresiva para héroes digitales.",
+    "lang": "es-CO",
+    "dir": "ltr",
+    "categories": [
+        "social",
+        "entertainment"
+    ],
     "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "display_override": [
+        "standalone",
+        "minimal-ui",
+        "browser"
+    ],
+    "orientation": "portrait",
     "background_color": "#3498db",
     "theme_color": "#3498db",
-    "display": "standalone",
-    "orientation": "portrait",
-    "scope": "./",
+    "prefer_related_applications": false,
     "icons": [
+        {
+            "src": "img/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any"
+        },
         {
             "src": "img/icons/icon-192x192.png",
             "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-512x512.png",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "any"
         },
@@ -22,20 +77,45 @@
             "purpose": "maskable"
         }
     ],
-    "screenshots": [
+    "shortcuts": [
         {
-            "src": "img/screenshot-mobile.png",
-            "sizes": "1080x1920",
-            "type": "image/png",
-            "form_factor": "narrow",
-            "label": "Vista móvil de Chat para héroes"
+            "name": "Chatear como Spiderman",
+            "short_name": "Spiderman",
+            "description": "Entra directamente al chat como Spiderman",
+            "url": "./index.html?user=spiderman",
+            "icons": [
+                {
+                    "src": "img/avatars/spiderman.jpg",
+                    "sizes": "250x250",
+                    "type": "image/jpeg"
+                }
+            ]
         },
         {
-            "src": "img/screenshot-desktop.png",
-            "sizes": "1920x1080",
-            "type": "image/png",
-            "form_factor": "wide",
-            "label": "Vista escritorio de Chat para héroes"
+            "name": "Chatear como Ironman",
+            "short_name": "Ironman",
+            "description": "Entra directamente al chat como Ironman",
+            "url": "./index.html?user=ironman",
+            "icons": [
+                {
+                    "src": "img/avatars/ironman.jpg",
+                    "sizes": "250x250",
+                    "type": "image/jpeg"
+                }
+            ]
+        },
+        {
+            "name": "Chatear como Thor",
+            "short_name": "Thor",
+            "description": "Entra directamente al chat como Thor",
+            "url": "./index.html?user=thor",
+            "icons": [
+                {
+                    "src": "img/avatars/thor.jpg",
+                    "sizes": "250x250",
+                    "type": "image/jpeg"
+                }
+            ]
         }
     ]
 }
